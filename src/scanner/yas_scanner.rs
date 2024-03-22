@@ -16,7 +16,7 @@ use log::{debug, error, info, trace, warn};
 use serde::{Deserialize, Serialize};
 
 use crate::artifact::internal_artifact::{
-    ArtifactSetKey, ArtifactSlotKey, ArtifactStat, CharacterKey, InternalArtifact,
+    ArtifactSetName, ArtifactSlot, ArtifactStat, CharacterKey, InternalArtifact,
 };
 use crate::capture::{self, capture_absolute_raw_image};
 use crate::common::color::Color;
@@ -98,8 +98,8 @@ pub struct YasScanResult {
 
 impl YasScanResult {
     pub fn to_internal_artifact(&self) -> Option<InternalArtifact> {
-        let set_key = ArtifactSetKey::from_zh_cn(&self.name)?;
-        let slot_key = ArtifactSlotKey::from_zh_cn(&self.name)?;
+        let set_key = ArtifactSetName::from_zh_cn(&self.name)?;
+        let slot_key = ArtifactSlot::from_zh_cn(&self.name)?;
         let rarity = self.rarity;
         if !self.level.contains("+") {
             return None;

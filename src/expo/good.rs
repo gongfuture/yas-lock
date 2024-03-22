@@ -4,50 +4,50 @@ use std::convert::From;
 use serde::ser::{Serialize, SerializeMap, Serializer};
 
 use crate::artifact::internal_artifact::{
-    ArtifactSetKey, ArtifactSlotKey, ArtifactStat, ArtifactStatKey, CharacterKey, InternalArtifact,
+    ArtifactSetName, ArtifactSlot, ArtifactStat, ArtifactStatName, CharacterKey, InternalArtifact,
 };
 
-impl ArtifactStatKey {
+impl ArtifactStatName {
     pub fn to_good(&self) -> String {
         let temp = match self {
-            ArtifactStatKey::HealingBonus => "heal_",
-            ArtifactStatKey::CriticalDamage => "critDMG_",
-            ArtifactStatKey::Critical => "critRate_",
-            ArtifactStatKey::Atk => "atk",
-            ArtifactStatKey::AtkPercentage => "atk_",
-            ArtifactStatKey::ElementalMastery => "eleMas",
-            ArtifactStatKey::Recharge => "enerRech_",
-            ArtifactStatKey::HpPercentage => "hp_",
-            ArtifactStatKey::Hp => "hp",
-            ArtifactStatKey::DefPercentage => "def_",
-            ArtifactStatKey::Def => "def",
-            ArtifactStatKey::ElectroBonus => "electro_dmg_",
-            ArtifactStatKey::PyroBonus => "pyro_dmg_",
-            ArtifactStatKey::HydroBonus => "hydro_dmg_",
-            ArtifactStatKey::CryoBonus => "cryo_dmg_",
-            ArtifactStatKey::AnemoBonus => "anemo_dmg_",
-            ArtifactStatKey::GeoBonus => "geo_dmg_",
-            ArtifactStatKey::PhysicalBonus => "physical_dmg_",
-            ArtifactStatKey::DendroBonus => "dendro_dmg_",
+            ArtifactStatName::HealingBonus => "heal_",
+            ArtifactStatName::CriticalDamage => "critDMG_",
+            ArtifactStatName::Critical => "critRate_",
+            ArtifactStatName::Atk => "atk",
+            ArtifactStatName::AtkPercentage => "atk_",
+            ArtifactStatName::ElementalMastery => "eleMas",
+            ArtifactStatName::Recharge => "enerRech_",
+            ArtifactStatName::HpPercentage => "hp_",
+            ArtifactStatName::Hp => "hp",
+            ArtifactStatName::DefPercentage => "def_",
+            ArtifactStatName::Def => "def",
+            ArtifactStatName::ElectroBonus => "electro_dmg_",
+            ArtifactStatName::PyroBonus => "pyro_dmg_",
+            ArtifactStatName::HydroBonus => "hydro_dmg_",
+            ArtifactStatName::CryoBonus => "cryo_dmg_",
+            ArtifactStatName::AnemoBonus => "anemo_dmg_",
+            ArtifactStatName::GeoBonus => "geo_dmg_",
+            ArtifactStatName::PhysicalBonus => "physical_dmg_",
+            ArtifactStatName::DendroBonus => "dendro_dmg_",
         };
         String::from(temp)
     }
 }
 
-impl ArtifactSetKey {
+impl ArtifactSetName {
     pub fn to_good(&self) -> String {
         return self.to_string();
     }
 }
 
-impl ArtifactSlotKey {
+impl ArtifactSlot {
     pub fn to_good(&self) -> String {
         let temp = match self {
-            ArtifactSlotKey::Flower => "flower",
-            ArtifactSlotKey::Plume => "plume",
-            ArtifactSlotKey::Sands => "sands",
-            ArtifactSlotKey::Goblet => "goblet",
-            ArtifactSlotKey::Circlet => "circlet",
+            ArtifactSlot::Flower => "flower",
+            ArtifactSlot::Feather => "plume",
+            ArtifactSlot::Sand => "sands",
+            ArtifactSlot::Goblet => "goblet",
+            ArtifactSlot::Head => "circlet",
         };
         String::from(temp)
     }

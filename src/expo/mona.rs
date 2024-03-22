@@ -4,93 +4,93 @@ use std::convert::From;
 use serde::ser::{Serialize, SerializeMap, Serializer};
 
 use crate::artifact::internal_artifact::{
-    ArtifactSetKey, ArtifactSlotKey, ArtifactStat, ArtifactStatKey, CharacterKey, InternalArtifact,
+    ArtifactSetName, ArtifactSlot, ArtifactStat, ArtifactStatName, CharacterKey, InternalArtifact,
 };
 
 type MonaArtifact = InternalArtifact;
 
-impl ArtifactStatKey {
+impl ArtifactStatName {
     pub fn to_mona(&self) -> String {
         let temp = match self {
-            ArtifactStatKey::HealingBonus => "cureEffect",
-            ArtifactStatKey::CriticalDamage => "criticalDamage",
-            ArtifactStatKey::Critical => "critical",
-            ArtifactStatKey::Atk => "attackStatic",
-            ArtifactStatKey::AtkPercentage => "attackPercentage",
-            ArtifactStatKey::ElementalMastery => "elementalMastery",
-            ArtifactStatKey::Recharge => "recharge",
-            ArtifactStatKey::HpPercentage => "lifePercentage",
-            ArtifactStatKey::Hp => "lifeStatic",
-            ArtifactStatKey::DefPercentage => "defendPercentage",
-            ArtifactStatKey::Def => "defendStatic",
-            ArtifactStatKey::ElectroBonus => "thunderBonus",
-            ArtifactStatKey::PyroBonus => "fireBonus",
-            ArtifactStatKey::HydroBonus => "waterBonus",
-            ArtifactStatKey::CryoBonus => "iceBonus",
-            ArtifactStatKey::AnemoBonus => "windBonus",
-            ArtifactStatKey::GeoBonus => "rockBonus",
-            ArtifactStatKey::PhysicalBonus => "physicalBonus",
-            ArtifactStatKey::DendroBonus => "dendroBonus",
+            ArtifactStatName::HealingBonus => "cureEffect",
+            ArtifactStatName::CriticalDamage => "criticalDamage",
+            ArtifactStatName::Critical => "critical",
+            ArtifactStatName::Atk => "attackStatic",
+            ArtifactStatName::AtkPercentage => "attackPercentage",
+            ArtifactStatName::ElementalMastery => "elementalMastery",
+            ArtifactStatName::Recharge => "recharge",
+            ArtifactStatName::HpPercentage => "lifePercentage",
+            ArtifactStatName::Hp => "lifeStatic",
+            ArtifactStatName::DefPercentage => "defendPercentage",
+            ArtifactStatName::Def => "defendStatic",
+            ArtifactStatName::ElectroBonus => "thunderBonus",
+            ArtifactStatName::PyroBonus => "fireBonus",
+            ArtifactStatName::HydroBonus => "waterBonus",
+            ArtifactStatName::CryoBonus => "iceBonus",
+            ArtifactStatName::AnemoBonus => "windBonus",
+            ArtifactStatName::GeoBonus => "rockBonus",
+            ArtifactStatName::PhysicalBonus => "physicalBonus",
+            ArtifactStatName::DendroBonus => "dendroBonus",
         };
         String::from(temp)
     }
 }
 
-impl ArtifactSetKey {
+impl ArtifactSetName {
     pub fn to_mona(&self) -> String {
         let same = self.to_string();
         let temp = match self {
-            ArtifactSetKey::ArchaicPetra => "archaicPetra",
-            ArtifactSetKey::HeartOfDepth => "heartOfDepth",
-            ArtifactSetKey::BlizzardStrayer => "blizzardStrayer",
-            ArtifactSetKey::RetracingBolide => "retracingBolide",
-            ArtifactSetKey::NoblesseOblige => "noblesseOblige",
-            ArtifactSetKey::GladiatorsFinale => "gladiatorFinale",
-            ArtifactSetKey::MaidenBeloved => "maidenBeloved",
-            ArtifactSetKey::ViridescentVenerer => "viridescentVenerer",
-            ArtifactSetKey::Lavawalker => "lavaWalker",
-            ArtifactSetKey::CrimsonWitchOfFlames => "crimsonWitch",
-            ArtifactSetKey::Thundersoother => "thunderSmoother",
-            ArtifactSetKey::ThunderingFury => "thunderingFury",
-            ArtifactSetKey::BloodstainedChivalry => "bloodstainedChivalry",
-            ArtifactSetKey::WanderersTroupe => "wandererTroupe",
-            ArtifactSetKey::Scholar => "scholar",
-            ArtifactSetKey::Gambler => "gambler",
-            ArtifactSetKey::TinyMiracle => "tinyMiracle",
-            ArtifactSetKey::MartialArtist => "martialArtist",
-            ArtifactSetKey::BraveHeart => "braveHeart",
-            ArtifactSetKey::ResolutionOfSojourner => "resolutionOfSojourner",
-            ArtifactSetKey::DefenderWill => "defenderWill",
-            ArtifactSetKey::Berserker => "berserker",
-            ArtifactSetKey::Instructor => "instructor",
-            ArtifactSetKey::Exile => "exile",
-            ArtifactSetKey::Adventurer => "adventurer",
-            ArtifactSetKey::LuckyDog => "luckyDog",
-            ArtifactSetKey::TravelingDoctor => "travelingDoctor",
-            ArtifactSetKey::PrayersForWisdom => "prayersForWisdom",
-            ArtifactSetKey::PrayersToSpringtime => "prayersToSpringtime",
-            ArtifactSetKey::PrayersForIllumination => "prayersForIllumination",
-            ArtifactSetKey::PrayersForDestiny => "prayersForDestiny",
-            ArtifactSetKey::PaleFlame => "paleFlame",
-            ArtifactSetKey::TenacityOfTheMillelith => "tenacityOfTheMillelith",
-            ArtifactSetKey::EmblemOfSeveredFate => "emblemOfSeveredFate",
-            ArtifactSetKey::ShimenawasReminiscence => "shimenawaReminiscence",
-            ArtifactSetKey::HuskOfOpulentDreams => "huskOfOpulentDreams",
-            ArtifactSetKey::OceanHuedClam => "oceanHuedClam",
+            ArtifactSetName::ArchaicPetra => "archaicPetra",
+            ArtifactSetName::HeartOfDepth => "heartOfDepth",
+            ArtifactSetName::BlizzardStrayer => "blizzardStrayer",
+            ArtifactSetName::RetracingBolide => "retracingBolide",
+            ArtifactSetName::NoblesseOblige => "noblesseOblige",
+            ArtifactSetName::GladiatorsFinale => "gladiatorFinale",
+            ArtifactSetName::MaidenBeloved => "maidenBeloved",
+            ArtifactSetName::ViridescentVenerer => "viridescentVenerer",
+            ArtifactSetName::Lavawalker => "lavaWalker",
+            ArtifactSetName::CrimsonWitchOfFlames => "crimsonWitch",
+            ArtifactSetName::Thundersoother => "thunderSmoother",
+            ArtifactSetName::ThunderingFury => "thunderingFury",
+            ArtifactSetName::BloodstainedChivalry => "bloodstainedChivalry",
+            ArtifactSetName::WanderersTroupe => "wandererTroupe",
+            ArtifactSetName::Scholar => "scholar",
+            ArtifactSetName::Gambler => "gambler",
+            ArtifactSetName::TinyMiracle => "tinyMiracle",
+            ArtifactSetName::MartialArtist => "martialArtist",
+            ArtifactSetName::BraveHeart => "braveHeart",
+            ArtifactSetName::ResolutionOfSojourner => "resolutionOfSojourner",
+            ArtifactSetName::DefenderWill => "defenderWill",
+            ArtifactSetName::Berserker => "berserker",
+            ArtifactSetName::Instructor => "instructor",
+            ArtifactSetName::Exile => "exile",
+            ArtifactSetName::Adventurer => "adventurer",
+            ArtifactSetName::LuckyDog => "luckyDog",
+            ArtifactSetName::TravelingDoctor => "travelingDoctor",
+            ArtifactSetName::PrayersForWisdom => "prayersForWisdom",
+            ArtifactSetName::PrayersToSpringtime => "prayersToSpringtime",
+            ArtifactSetName::PrayersForIllumination => "prayersForIllumination",
+            ArtifactSetName::PrayersForDestiny => "prayersForDestiny",
+            ArtifactSetName::PaleFlame => "paleFlame",
+            ArtifactSetName::TenacityOfTheMillelith => "tenacityOfTheMillelith",
+            ArtifactSetName::EmblemOfSeveredFate => "emblemOfSeveredFate",
+            ArtifactSetName::ShimenawasReminiscence => "shimenawaReminiscence",
+            ArtifactSetName::HuskOfOpulentDreams => "huskOfOpulentDreams",
+            ArtifactSetName::OceanHuedClam => "oceanHuedClam",
             _ => same.as_str(),
         };
         String::from(temp)
     }
 }
 
-impl ArtifactSlotKey {
+impl ArtifactSlot {
     pub fn to_mona(&self) -> String {
         let temp = match self {
-            ArtifactSlotKey::Flower => "flower",
-            ArtifactSlotKey::Plume => "feather",
-            ArtifactSlotKey::Sands => "sand",
-            ArtifactSlotKey::Goblet => "cup",
-            ArtifactSlotKey::Circlet => "head",
+            ArtifactSlot::Flower => "flower",
+            ArtifactSlot::Feather => "feather",
+            ArtifactSlot::Sand => "sand",
+            ArtifactSlot::Goblet => "cup",
+            ArtifactSlot::Head => "head",
         };
         String::from(temp)
     }
@@ -185,10 +185,10 @@ impl Serialize for ArtifactStat {
         let mut root = serializer.serialize_map(Some(2))?;
         root.serialize_entry("name", &self.key.to_mona())?;
         let value = match self.key {
-            ArtifactStatKey::Atk
-            | ArtifactStatKey::ElementalMastery
-            | ArtifactStatKey::Hp
-            | ArtifactStatKey::Def => self.value,
+            ArtifactStatName::Atk
+            | ArtifactStatName::ElementalMastery
+            | ArtifactStatName::Hp
+            | ArtifactStatName::Def => self.value,
             _ => self.value / 100.0,
         };
         root.serialize_entry("value", &value)?;
@@ -277,11 +277,11 @@ impl<'a> MonaFormat<'a> {
 
         for art in results.iter() {
             match art.slot_key {
-                ArtifactSlotKey::Flower => flower.push(art),
-                ArtifactSlotKey::Plume => feather.push(art),
-                ArtifactSlotKey::Sands => sand.push(art),
-                ArtifactSlotKey::Goblet => cup.push(art),
-                ArtifactSlotKey::Circlet => head.push(art),
+                ArtifactSlot::Flower => flower.push(art),
+                ArtifactSlot::Feather => feather.push(art),
+                ArtifactSlot::Sand => sand.push(art),
+                ArtifactSlot::Goblet => cup.push(art),
+                ArtifactSlot::Head => head.push(art),
             }
         }
 

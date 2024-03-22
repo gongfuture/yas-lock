@@ -1,5 +1,5 @@
 use crate::artifact::internal_artifact::{
-    ArtifactSetKey, ArtifactSlotKey, ArtifactStat, ArtifactStatKey, InternalArtifact,
+    ArtifactSetName, ArtifactSlot, ArtifactStat, ArtifactStatName, InternalArtifact,
 };
 use anyhow::Result;
 use serde::ser::{Serialize, SerializeMap, Serializer};
@@ -42,96 +42,96 @@ impl<'a> Serialize for GenmoArtifact<'a> {
     }
 }
 
-impl ArtifactStatKey {
+impl ArtifactStatName {
     pub fn to_genmo(&self) -> &'static str {
         match self {
-            ArtifactStatKey::HealingBonus => "healing",
-            ArtifactStatKey::CriticalDamage => "critDamage",
-            ArtifactStatKey::Critical => "critRate",
-            ArtifactStatKey::Atk => "flatATK",
-            ArtifactStatKey::AtkPercentage => "percentATK",
-            ArtifactStatKey::ElementalMastery => "elementalMastery",
-            ArtifactStatKey::Recharge => "energyRecharge",
-            ArtifactStatKey::HpPercentage => "percentHP",
-            ArtifactStatKey::Hp => "flatHP",
-            ArtifactStatKey::DefPercentage => "percentDEF",
-            ArtifactStatKey::Def => "flatDEF",
-            ArtifactStatKey::ElectroBonus => "electroDamage",
-            ArtifactStatKey::PyroBonus => "pyroDamage",
-            ArtifactStatKey::HydroBonus => "hydroDamage",
-            ArtifactStatKey::CryoBonus => "cryoDamage",
-            ArtifactStatKey::AnemoBonus => "anemoDamage",
-            ArtifactStatKey::GeoBonus => "geoDamage",
-            ArtifactStatKey::PhysicalBonus => "physicalDamage",
-            ArtifactStatKey::DendroBonus => "dendroDamage",
+            ArtifactStatName::HealingBonus => "healing",
+            ArtifactStatName::CriticalDamage => "critDamage",
+            ArtifactStatName::Critical => "critRate",
+            ArtifactStatName::Atk => "flatATK",
+            ArtifactStatName::AtkPercentage => "percentATK",
+            ArtifactStatName::ElementalMastery => "elementalMastery",
+            ArtifactStatName::Recharge => "energyRecharge",
+            ArtifactStatName::HpPercentage => "percentHP",
+            ArtifactStatName::Hp => "flatHP",
+            ArtifactStatName::DefPercentage => "percentDEF",
+            ArtifactStatName::Def => "flatDEF",
+            ArtifactStatName::ElectroBonus => "electroDamage",
+            ArtifactStatName::PyroBonus => "pyroDamage",
+            ArtifactStatName::HydroBonus => "hydroDamage",
+            ArtifactStatName::CryoBonus => "cryoDamage",
+            ArtifactStatName::AnemoBonus => "anemoDamage",
+            ArtifactStatName::GeoBonus => "geoDamage",
+            ArtifactStatName::PhysicalBonus => "physicalDamage",
+            ArtifactStatName::DendroBonus => "dendroDamage",
         }
     }
 }
 
-impl ArtifactSlotKey {
+impl ArtifactSlot {
     pub fn to_genmo(&self) -> &'static str {
         match self {
-            ArtifactSlotKey::Flower => "flower",
-            ArtifactSlotKey::Plume => "plume",
-            ArtifactSlotKey::Sands => "eon",
-            ArtifactSlotKey::Goblet => "goblet",
-            ArtifactSlotKey::Circlet => "circlet",
+            ArtifactSlot::Flower => "flower",
+            ArtifactSlot::Feather => "plume",
+            ArtifactSlot::Sand => "eon",
+            ArtifactSlot::Goblet => "goblet",
+            ArtifactSlot::Head => "circlet",
         }
     }
 }
 
-impl ArtifactSetKey {
+impl ArtifactSetName {
     pub fn to_genmo(&self) -> &'static str {
         match self {
-            ArtifactSetKey::ArchaicPetra => "archaic_petra",
-            ArtifactSetKey::HeartOfDepth => "heart_of_depth",
-            ArtifactSetKey::BlizzardStrayer => "blizzard_walker",
-            ArtifactSetKey::RetracingBolide => "retracing_bolide",
-            ArtifactSetKey::NoblesseOblige => "noblesse_oblige",
-            ArtifactSetKey::GladiatorsFinale => "gladiators_finale",
-            ArtifactSetKey::MaidenBeloved => "maiden_beloved",
-            ArtifactSetKey::ViridescentVenerer => "viridescent_venerer",
-            ArtifactSetKey::Lavawalker => "lavawalker",
-            ArtifactSetKey::CrimsonWitchOfFlames => "crimson_witch_of_flames",
-            ArtifactSetKey::Thundersoother => "thundersoother",
-            ArtifactSetKey::ThunderingFury => "thundering_fury",
-            ArtifactSetKey::BloodstainedChivalry => "bloodstained_chivalry",
-            ArtifactSetKey::WanderersTroupe => "wanderers_troupe",
-            ArtifactSetKey::Scholar => "scholar",
-            ArtifactSetKey::Gambler => "gambler",
-            ArtifactSetKey::TinyMiracle => "tiny_miracle",
-            ArtifactSetKey::MartialArtist => "martial_artist",
-            ArtifactSetKey::BraveHeart => "brave_heart",
-            ArtifactSetKey::ResolutionOfSojourner => "resolution_of_sojourner",
-            ArtifactSetKey::DefenderWill => "defenders_will",
-            ArtifactSetKey::Berserker => "berserker",
-            ArtifactSetKey::Instructor => "instructor",
-            ArtifactSetKey::Exile => "the_exile",
-            ArtifactSetKey::PrayersForWisdom => "prayers_of_wisdom",
-            ArtifactSetKey::PrayersToSpringtime => "prayers_of_springtime",
-            ArtifactSetKey::PrayersForIllumination => "prayers_of_illumination",
-            ArtifactSetKey::PrayersForDestiny => "prayers_of_destiny",
-            ArtifactSetKey::PaleFlame => "pale_flame",
-            ArtifactSetKey::TenacityOfTheMillelith => "tenacity_of_the_millelith",
-            ArtifactSetKey::EmblemOfSeveredFate => "seal_of_insulation",
-            ArtifactSetKey::ShimenawasReminiscence => "reminiscence_of_shime",
-            ArtifactSetKey::HuskOfOpulentDreams => "husk_of_opulent_dreams",
-            ArtifactSetKey::OceanHuedClam => "divine_chorus",
-            ArtifactSetKey::VermillionHereafter => "vermillion_hereafter",
-            ArtifactSetKey::EchoesOfAnOffering => "echoes_of_an_offering",
-            ArtifactSetKey::DeepwoodMemories => "deepwood_memories",
-            ArtifactSetKey::GildedDreams => "gilded_dreams",
-            ArtifactSetKey::DesertPavilionChronicle => "desert_pavilion_chronicle",
-            ArtifactSetKey::FlowerOfParadiseLost => "flower_of_paradise_lost",
-            ArtifactSetKey::NymphsDream => "nymphs_dream",
-            ArtifactSetKey::VourukashasGlow => "vourukashas_glow",
-            ArtifactSetKey::MarechausseeHunter => "marechaussee_hunter",
-            ArtifactSetKey::GoldenTroupe => "golden_troupe",
+            ArtifactSetName::ArchaicPetra => "archaic_petra",
+            ArtifactSetName::HeartOfDepth => "heart_of_depth",
+            ArtifactSetName::BlizzardStrayer => "blizzard_walker",
+            ArtifactSetName::RetracingBolide => "retracing_bolide",
+            ArtifactSetName::NoblesseOblige => "noblesse_oblige",
+            ArtifactSetName::GladiatorsFinale => "gladiators_finale",
+            ArtifactSetName::MaidenBeloved => "maiden_beloved",
+            ArtifactSetName::ViridescentVenerer => "viridescent_venerer",
+            ArtifactSetName::Lavawalker => "lavawalker",
+            ArtifactSetName::CrimsonWitchOfFlames => "crimson_witch_of_flames",
+            ArtifactSetName::Thundersoother => "thundersoother",
+            ArtifactSetName::ThunderingFury => "thundering_fury",
+            ArtifactSetName::BloodstainedChivalry => "bloodstained_chivalry",
+            ArtifactSetName::WanderersTroupe => "wanderers_troupe",
+            ArtifactSetName::Scholar => "scholar",
+            ArtifactSetName::Gambler => "gambler",
+            ArtifactSetName::TinyMiracle => "tiny_miracle",
+            ArtifactSetName::MartialArtist => "martial_artist",
+            ArtifactSetName::BraveHeart => "brave_heart",
+            ArtifactSetName::ResolutionOfSojourner => "resolution_of_sojourner",
+            ArtifactSetName::DefenderWill => "defenders_will",
+            ArtifactSetName::Berserker => "berserker",
+            ArtifactSetName::Instructor => "instructor",
+            ArtifactSetName::Exile => "the_exile",
+            ArtifactSetName::PrayersForWisdom => "prayers_of_wisdom",
+            ArtifactSetName::PrayersToSpringtime => "prayers_of_springtime",
+            ArtifactSetName::PrayersForIllumination => "prayers_of_illumination",
+            ArtifactSetName::PrayersForDestiny => "prayers_of_destiny",
+            ArtifactSetName::PaleFlame => "pale_flame",
+            ArtifactSetName::TenacityOfTheMillelith => "tenacity_of_the_millelith",
+            ArtifactSetName::EmblemOfSeveredFate => "seal_of_insulation",
+            ArtifactSetName::ShimenawasReminiscence => "reminiscence_of_shime",
+            ArtifactSetName::HuskOfOpulentDreams => "husk_of_opulent_dreams",
+            ArtifactSetName::OceanHuedClam => "divine_chorus",
+            ArtifactSetName::VermillionHereafter => "vermillion_hereafter",
+            ArtifactSetName::EchoesOfAnOffering => "echoes_of_an_offering",
+            ArtifactSetName::DeepwoodMemories => "deepwood_memories",
+            ArtifactSetName::GildedDreams => "gilded_dreams",
+            ArtifactSetName::DesertPavilionChronicle => "desert_pavilion_chronicle",
+            ArtifactSetName::FlowerOfParadiseLost => "flower_of_paradise_lost",
+            ArtifactSetName::NymphsDream => "nymphs_dream",
+            ArtifactSetName::VourukashasGlow => "vourukashas_glow",
+            ArtifactSetName::MarechausseeHunter => "marechaussee_hunter",
+            ArtifactSetName::GoldenTroupe => "golden_troupe",
 
             // Not supported by Mingyulab
-            ArtifactSetKey::Adventurer => unreachable!(),
-            ArtifactSetKey::LuckyDog => unreachable!(),
-            ArtifactSetKey::TravelingDoctor => unreachable!(),
+            ArtifactSetName::Adventurer => unreachable!(),
+            ArtifactSetName::LuckyDog => unreachable!(),
+            ArtifactSetName::TravelingDoctor => unreachable!(),
         }
     }
 }
@@ -145,9 +145,9 @@ impl<'a> GenmoFormat<'a> {
         let artifacts: Vec<GenmoArtifact<'a>> = results
             .into_iter()
             .filter(|artifact| {
-                artifact.set_key != ArtifactSetKey::Adventurer
-                    && artifact.set_key != ArtifactSetKey::LuckyDog
-                    && artifact.set_key != ArtifactSetKey::TravelingDoctor
+                artifact.set_key != ArtifactSetName::Adventurer
+                    && artifact.set_key != ArtifactSetName::LuckyDog
+                    && artifact.set_key != ArtifactSetName::TravelingDoctor
             })
             .map(|artifact| GenmoArtifact { artifact })
             .collect();
