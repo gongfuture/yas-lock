@@ -22,7 +22,7 @@ edit-distance = "2.1"
 os_info = "3.0"
 strum = "0.25"
 strum_macros = "0.25"
-rand = "0.8"
+rand = "0.10"
 reqwest = { version = "0.11", features = ["blocking", "json"] }
 semver = "1.0"
 lazy_static = "1.4"
